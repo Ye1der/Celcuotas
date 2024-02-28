@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Dashboard } from './routes/Dashboard'
-import { ContextStyles } from './context/Context'
+import { ContextGlbal } from './context/Context'
+import { NavBar } from './components/NavBar'
 
 const router = createBrowserRouter([
   {
@@ -10,11 +11,17 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return(
-    <ContextStyles>
-      <RouterProvider router={router} />
-    </ContextStyles>
-  ) 
+  return (
+    <section className='w-full h-svh pt-[70px] overflow-hidden'>
+      <NavBar />
+
+      <section className='w-full h-full overflow-auto scrollbar-none'>
+        <ContextGlbal>
+          <RouterProvider router={router} />
+        </ContextGlbal>
+      </section>
+    </section>
+  )
 }
 
 export default App
