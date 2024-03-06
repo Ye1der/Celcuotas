@@ -12,6 +12,9 @@ export default {
         cosmicLatte: '#FFF5E9',
       }
     },
+    boxShadow: {
+      'around': '0px 0px 10px -3px #202020'
+    }
   },
   plugins: [
     require('tailwind-scrollbar'),

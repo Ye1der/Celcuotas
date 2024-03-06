@@ -10,12 +10,12 @@ export function Dashboard() {
     <>
       <section className="flex flex-wrap w-full mt-10 justify-center items-center max-md:gap-10 gap-20">
         <div>
-          <h2 className="text-smokyBlack opacity-80 text-3xl ml-1">
+          <h2 className="text-smokyBlack opacity-80 text-3xl ml-1 max-sm:text-2xl">
             Explora nuetra <br />
             Amplia gama de smartphones.
           </h2>
 
-          <h1 className="text-smokyBlack text-5xl font-semibold">
+          <h1 className="text-smokyBlack text-5xl font-semibold max-sm:text-4xl">
             ¡Encuentra el tuyo!
           </h1>
 

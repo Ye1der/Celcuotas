@@ -19,7 +19,7 @@ export function Slider() {
   };
 
   return (
-    <section className="flex flex-col items-center gap-5 max-md:scale-90">
+    <section className="flex flex-col items-center gap-5 max-md:scale-90 max-sm:scale-[70%]">
       <div className="slider h-[300px] w-[550px] flex items-center relative">
         {array.map((element, index) => (
           <CardPhone key={index} url="/phone.png" name={`${element}`} index={index} arrayLength={array.length} />

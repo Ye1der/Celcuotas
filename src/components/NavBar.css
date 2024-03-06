@@ -1,0 +1,12 @@
+.icon {
+  scale: 0;
+  opacity: 0;
+  animation: mountIcon 0.3s forwards;
+}
+
+@keyframes mountIcon {
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
