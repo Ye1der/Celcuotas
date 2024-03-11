@@ -1,5 +1,4 @@
 import { Slider } from "../components/Slider";
-import { Footer } from "../components/dashboard/Footer";
 import { Marcas } from "../components/dashboard/Marcas";
 import { Cards } from "../components/dashboard/Cards";
 import { BenefitBar } from "../components/dashboard/BenefitBar";
@@ -30,7 +29,6 @@ export function Dashboard() {
       <BenefitBar />
       <Cards />
       <Marcas />
-      <Footer />
     </>
   )
 }

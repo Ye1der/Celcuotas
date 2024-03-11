@@ -2,7 +2,7 @@ import { AlignLeft, Search, X } from "lucide-react"
 import { ShoppingCart } from "lucide-react"
 import { User } from "lucide-react"
 import { Globe } from "lucide-react"
-import './NavBar.css'
+// import './NavBar.css'
 import { useState } from "react"
 
 export function NavBar() {
@@ -16,7 +16,7 @@ export function NavBar() {
         {showBar ? <X className="icon" strokeWidth={2.3} size={27} /> : <AlignLeft className="icon" strokeWidth={2.3} size={27} />}
       </button>
 
-      <section className={`bg-cosmicLatte h-[70px] lg:w-full flex lg:justify-between absolute top-0 transition-all duration-300 max-lg:${showBar ? '-left-0' : '-left-full'} max-lg:flex-col max-lg:items-center max-lg:h-svh max-lg:w-fit max-lg:z-40 max-lg:py-10 max-lg:justify-between`}>
+      <section className={`bg-cosmicLatte h-[70px] lg:w-full flex lg:justify-between absolute top-0 transition-all duration-300 ${showBar ? 'max-lg:left-0' : 'max-lg:-left-full'} max-lg:flex-col max-lg:items-center max-lg:h-svh max-lg:w-fit max-lg:z-40 max-lg:py-10 max-lg:justify-between`}>
         <div className="flex lg:h-full items-center gap-8 font-semibold text-lg max-lg:flex-col">
           <a href="/">
             <img src="/logo.svg" alt="Logo" className="w-36 mr-10 ml-10 max-lg:mb-10" />

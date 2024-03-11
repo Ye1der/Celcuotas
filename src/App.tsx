@@ -3,6 +3,8 @@ import { Dashboard } from './routes/Dashboard'
 import { ContextGlbal } from './context/Context'
 import { NavBar } from './components/NavBar'
 import { Store } from './routes/Store'
+import { Footer } from './components/dashboard/Footer'
+
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,7 @@ function App() {
         <ContextGlbal>
           <RouterProvider router={router} />
         </ContextGlbal>
+        <Footer/>
       </section>
     </section>
   )
