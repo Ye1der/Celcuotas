@@ -1,0 +1,79 @@
+/* Tailwind --> z-50 w-full h-full bg-black bg-opacity-50 absolute top-0 left-0 flex justify-center items-center */
+
+.showModal {
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: mountModal 0.3s forwards;
+}
+
+.hideModal {
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: unmountModal 0.3s forwards;
+}
+
+@keyframes mountModal {
+  from {
+    opacity: 0;
+    display: none;
+  }
+
+  to {
+    opacity: 1;
+    display: flex;
+  }
+}
+
+@keyframes unmountModal {
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+/*-------> Children <-------*/
+/* Tailwind --> flex flex-col gap-10 */
+
+.showChildren {
+  z-index: 50;
+  animation: mountChildren 0.3s forwards;
+}
+.hideChildren {
+  z-index: 50;
+  animation: unmountChildren 0.3s forwards;
+}
+
+@keyframes mountChildren {
+  from {
+    scale: 0;
+    opacity: 0;
+  }
+
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes unmountChildren {
+  to {
+    scale: 0;
+    opacity: 0;
+  }
+}
