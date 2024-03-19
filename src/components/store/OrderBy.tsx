@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUp, ArrowUpDown} from "lucide-react";
 import { useState } from "react";
+import { useCustomContext } from "../../context/Context";
 
 export function OrderBy () {
 
@@ -8,17 +9,22 @@ export function OrderBy () {
   const [optionText, setOptionText] = useState('Ordenar por')
   const [optionIcon, setOptionIcon] = useState<JSX.Element>(<ArrowUpDown strokeWidth={2}/>)
 
+  const {setOrderBy} = useCustomContext()
+
   function clickOption (option: boolean | null) {
     if (option) {
       setOptionText("Mayor precio")
+      setOrderBy('heighestPrice')
       setOptionIcon(<ArrowUp strokeWidth={2}/>)
 
     } else if (option == false) {
       setOptionText("Menor precio")
+      setOrderBy('lowestPrice')
       setOptionIcon(<ArrowDown strokeWidth={2}/>)
 
     } else if (option == null) {
       setOptionText("Ordenar por")
+      setOrderBy('none')
       setOptionIcon(<ArrowUpDown strokeWidth={2}/>)
     }
 
@@ -27,23 +33,23 @@ export function OrderBy () {
 
   return (
     <div className="relative w-fit h-fit z-20">
-      <button onClick={() => {setActive(!active)}} className={`w-[300px] h-12 px-4 bg-[#FFEFDB] ${!active && 'rounded-b-2xl'} rounded-t-2xl flex justify-between items-center hover:bg-[#ffe0b9] transition-all duration-300`}>
+      <button onClick={() => {setActive(!active)}} className={`w-[300px] max-md:w-[200px] h-12 px-4 bg-[#FFEFDB] ${!active && 'rounded-b-2xl'} rounded-t-2xl flex justify-between items-center hover:bg-[#ffe0b9] transition-all duration-300`}>
         <h1 className="text-xl font-semibold"> {optionText} </h1>
         {optionIcon}
       </button>
 
       <div className={`${active ? "visible opacity-1" : "opacity-0 invisible"} transition-all duration-300 absolute`}>
-        <button onClick={() => {clickOption(null)}} className="w-[300px] h-12 px-4 bg-[#FAFAFA] flex justify-between items-center">
+        <button onClick={() => {clickOption(null)}} className="w-[300px] max-md:w-[200px] h-12 px-4 bg-[#FAFAFA] flex justify-between items-center">
           <h1 className="text-xl font-semibold"> Ninguno </h1>
           <ArrowUpDown strokeWidth={2}/>
         </button>
 
-        <button onClick={() => {clickOption(true)}} className="w-[300px] h-12 px-4 bg-[#FAFAFA] flex justify-between items-center">
+        <button onClick={() => {clickOption(true)}} className="w-[300px] max-md:w-[200px] h-12 px-4 bg-[#FAFAFA] flex justify-between items-center">
           <h1 className="text-xl font-semibold"> Mayor precio </h1>
           <ArrowUp strokeWidth={2}/>
         </button>
 
-        <button onClick={() => {clickOption(false)}} className="w-[300px] h-12 px-4 bg-[#FAFAFA] rounded-b-2xl flex justify-between items-center">
+        <button onClick={() => {clickOption(false)}} className="w-[300px] max-md:w-[200px] h-12 px-4 bg-[#FAFAFA] rounded-b-2xl flex justify-between items-center">
           <h1 className="text-xl font-semibold"> Menor precio </h1>
           <ArrowDown strokeWidth={2}/>
         </button>

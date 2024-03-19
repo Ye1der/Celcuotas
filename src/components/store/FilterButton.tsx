@@ -18,7 +18,7 @@ export function FilterButton() {
         <ListFilter strokeWidth={2.5} />
       </button>
 
-      <Modal active={activeModal} setActive={setActiveModal} method={() => { }}>
+      <Modal active={activeModal} setActive={setActiveModal}>
         <FilterBy closeModal={closeModal}/>
       </Modal>
     </>

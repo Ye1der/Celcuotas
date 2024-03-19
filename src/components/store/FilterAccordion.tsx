@@ -6,14 +6,15 @@ interface Props {
   accordion: string
   setAccordion: (string: string) => void
   children: ReactNode
+  category: string
 }
 
-export function FilterAccordion ({title, accordion, setAccordion, children}: Props ) {
+export function FilterAccordion ({category, title, accordion, setAccordion, children}: Props ) {
   return (
     <div className="w-full bg-white font-medium py-1 px-2 my-2 rounded-xl relative transition-all duration-300">
       <button className="w-full flex justify-between items-center"
         onClick={() => { setAccordion(accordion == title.toLowerCase() ? '' : title.toLowerCase()) }}>
-        <h1 className="text-xl"> {title} </h1>
+        <h1 className={`text-xl ${title.trim() !== category ? 'text-darkOrange opacity-90 font-semibold' : ''}`}> {title} </h1>
         <ChevronDown className={`${accordion == title.toLowerCase() && 'rotate-[180deg]'} trasnition-all duration-300`} color="orange" strokeWidth={2.3} size={25} />
       </button>
 

@@ -10,6 +10,9 @@ export default {
         darkOrange: '#FF8F00',
         smokyBlack: '#120A00',
         cosmicLatte: '#FFF5E9',
+      },
+      animation: {
+        'fadeIn': 'fadeIn 0.5s ease-in-out forwards'
       }
     },
     boxShadow: {

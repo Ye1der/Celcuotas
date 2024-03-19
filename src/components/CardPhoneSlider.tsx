@@ -1,7 +1,6 @@
 import { useCustomContext } from "../context/Context"
 
 interface Props {
-  url?: string
   name?: string
   index: number
   arrayLength: number
@@ -9,7 +8,7 @@ interface Props {
 
 // el componente recibe el index de el que forma parte y la longitud de el array del que forma parte
 // usamos la url para saber que imagen poner y el name es el texto debajo de la imagen
-export function CardPhone({ url, name, index, arrayLength }: Props) {
+export function CardPhoneSlider({ name, index, arrayLength }: Props) {
 
   const { sliderItem, hideItem } = useCustomContext() // el item enfocado en el slider y la direccion del item que debe de ocultarse
   arrayLength = arrayLength - 1 // ajutamos la lenght al tamaño de el maximo index para no hacerlo cada vez
@@ -39,11 +38,13 @@ export function CardPhone({ url, name, index, arrayLength }: Props) {
     }
   }
 
+  const url = `/phones/${name?.replace(/ /g, "-")}.webp`
+
   return (
-    <div className={`${classCard} ${classCard !== "cardHideRight" && classCard !== "cardHideLeft" ? "card" : ""} bg-gray-200 p-3 rounded-2xl w-fit absolute transition-all duration-300`}
+    <div className={`${classCard} ${classCard !== "cardHideRight" && classCard !== "cardHideLeft" ? "card" : ""} flex flex-col items-center bg-gray-200 p-3 rounded-2xl w-fit absolute transition-all duration-300`}
       style={{ zIndex: zIndex }}>
-      <img src={url} alt="phone" className="min-w-[150px] w-[150px] z-[10]" />
-      <h1 className="text-center font-semibold mt-3 text-lg"> iPhone 15 Plus {name} </h1>
+      <img src={url} alt="phone" className="min-w-[150px] max-w-[150px] min-h-[200px] max-h-[200px] z-[10]" />
+      <h1 className="text-center font-semibold mt-3 text-lg"> {name?.slice(0, 16)} </h1>
     </div>
   )
 }

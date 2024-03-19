@@ -1,4 +1,3 @@
-import { ChevronLeft, ChevronRight} from "lucide-react";
 import { CardPhoneStore } from "../components/store/CardPhoneStore";
 import { OrderBy } from "../components/store/OrderBy";
 import { FilterButton } from "../components/store/FilterButton";
@@ -6,21 +5,25 @@ import { useEffect, useState } from "react";
 import { allPhones } from "../data/phones";
 import { Phone } from "../types";
 import { useCustomContext } from "../context/Context";
+import { IconConfusedPhone } from "../components/IconConfusedPhone";
+import { Pagination } from "../components/Pagination";
 
 export function Store() {
 
   // ejecutamos el metodo sort con una funcion que retorna numeros aleatorios para que el arreglo se desordene
   const [phones, setPhones] = useState(allPhones.sort(() => {return Math.random() - 0.5}))
   const {filterStore, orderBy} = useCustomContext()
+  const [page, setPage] = useState(1) // indica la pagina en la paginacion
 
   function filter () {
-    const phonesFiltered = phones.filter((phone) => {
+    const phonesFiltered = allPhones.filter((phone) => {
       if (compareObjects(phone, filterStore)){
         return phone
       }
     })
 
-    setPhones(phonesFiltered)
+    setPage(1)
+    setPhones(sort(phonesFiltered)) // le pasamos el arreglo ordenado como el usuario tenga seleccionado
   }
 
   function compareObjects (first: Phone, second: Phone): boolean {
@@ -37,8 +40,8 @@ export function Store() {
     return true
   }
 
-  function order () {
-    const arrayPhones = phones.slice()
+  function sort (array: Phone[]): Phone[] {
+    const arrayPhones = Array.from(array)
     arrayPhones.sort((first, second) => {
       if (first.price != null && second.price != null) { // comprobamos que los precios no sean nulos
         if (orderBy == 'heighestPrice') { // si es esta opcion organizamos de mayor a menor
@@ -53,56 +56,51 @@ export function Store() {
       return 0
     })
 
-    setPhones(arrayPhones)
+    return arrayPhones
   }
 
-  useEffect(filter, [filterStore])
-  useEffect(order, [orderBy])
+  useEffect(filter, [filterStore, orderBy])
 
   return (
     <section className="w-full">
       <section className="w-full flex justify-center mt-16 items-center gap-20">
-        <img src="/mainStore.png" alt="" className="w-[580px] rounded-xl" />
+        <img src="/mainStore.png" alt="" className="w-0 max-lg:hidden lg:w-[450px] xl:w-[580px] rounded-xl" />
 
         <div>
           <h3 className="text-darkOrange text-2xl font-semibold text-center mb-3 animate-bounce"> ¡No esperes más! </h3>
-          <h1 className="text-smokyBlack text-5xl font-semibold text-center mb-5"> Encuentra tu nuevo <br /> smartphone aqui</h1>
-          <h3 className="text-xl text-center"> En nuestro catálogo esta el celular que tanto <br /> habías soñado </h3>
+          <h1 className="text-smokyBlack text-5xl max-sm:text-4xl font-semibold text-center mb-5"> Encuentra tu nuevo <br /> smartphone aqui</h1>
+          <h3 className="text-xl max-sm:text-lg text-center"> En nuestro catálogo esta el celular que tanto <br /> habías soñado </h3>
         </div>
       </section>
 
       <section className="w-full px-14 my-20 flex justify-between gap-10 mb-10">
         <section className="w-full ">
-          <div className="w-full flex justify-between items-center">
 
+          <div className="w-full flex max-lg:flex-col gap-10 justify-between items-center">
             <div className="flex items-center gap-4">
               <OrderBy/>
               <FilterButton/>
             </div>
 
-            <div className="flex items-center gap-3">
-              <ChevronLeft />
-              <button className="font-semibold hover:opacity-100 opacity-60 rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 1 </button>
-              <button className="font-semibold hover:opacity-100 bg-darkOrange rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 2 </button>
-              <button className="font-semibold hover:opacity-100 opacity-60 rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 3 </button>
-              <button className="font-semibold hover:opacity-100 opacity-60 rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 4 </button>
-              <ChevronRight />
-            </div>
+            <Pagination array={phones} page={page} setPage={setPage}/>
           </div>
 
-          <div className="w-full mt-8 flex flex-wrap gap-4">
-            {phones.map((phone, index) => {
-              return <CardPhoneStore key={index} phone={phone}/>
-            })}
+          <div className={`mt-8 flex justify-center gap-8 flex-wrap`}>
+            {phones.length > 0 ?
+                // solo renderiza 12 elementos a partir de la pagina en la que este
+                phones.slice(12 * (page - 1), 12 + (12 * (page - 1))).map((phone, index) => {
+                return <CardPhoneStore key={index} phone={phone}/>
+                })
+              : 
+                <div className="animate-fadeIn w-full h-full flex flex-wrap justify-center items-center">
+                  <IconConfusedPhone className="opacity-80 scale-90"/>
+                  <h1 className="text-3xl font-extrabold opacity-80 text-center mb-8 -ml-5 "> No se encontraron <br/> referencias </h1>
+                </div>
+            }
+          </div>
 
-            <div className="flex items-center justify-center gap-3 mt-5 w-full">
-              <ChevronLeft />
-              <button className="font-semibold hover:opacity-100 opacity-60 rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 1 </button>
-              <button className="font-semibold hover:opacity-100 bg-darkOrange rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 2 </button>
-              <button className="font-semibold hover:opacity-100 opacity-60 rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 3 </button>
-              <button className="font-semibold hover:opacity-100 opacity-60 rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300"> 4 </button>
-              <ChevronRight />
-            </div>
+          <div className="w-full flex justify-center mt-10 mb-5">
+            <Pagination array={phones} page={page} setPage={setPage}/>
           </div>
 
         </section>

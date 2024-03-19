@@ -660,34 +660,6 @@ export const phones: arrayPhones = {
       "os": "Android"
     },
     {
-      "name": "Pixel 6",
-      "price": 4000000,
-      "screenSize": 6.4,
-      "batteryCapacity": 4614,
-      "brand": "Google",
-      "storage": 128,
-      "ram": 8,
-      "cameraMpx": 50,
-      "cpu": "Google Tensor",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "Android"
-    },
-    {
-      "name": "Pixel 5a",
-      "price": 2500000,
-      "screenSize": 6.34,
-      "batteryCapacity": 4680,
-      "brand": "Google",
-      "storage": 128,
-      "ram": 6,
-      "cameraMpx": 12.2,
-      "cpu": "Qualcomm Snapdragon 765G",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "Android"
-    },
-    {
       "name": "Pixel 5",
       "price": 3000000,
       "screenSize": 6.0,
@@ -715,20 +687,6 @@ export const phones: arrayPhones = {
       "fingerprint": true,
       "os": "Android"
     },
-    {
-      "name": "Pixel 4",
-      "price": 2200000,
-      "screenSize": 5.7,
-      "batteryCapacity": 2800,
-      "brand": "Google",
-      "storage": 128,
-      "ram": 6,
-      "cameraMpx": 16,
-      "cpu": "Qualcomm Snapdragon 855",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "Android"
-    }
   ],
 
   vivo: [
@@ -770,20 +728,6 @@ export const phones: arrayPhones = {
       "ram": 8,
       "cameraMpx": 50,
       "cpu": "Qualcomm Snapdragon 865",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "Android"
-    },
-    {
-      "name": "Vivo X50 Pro",
-      "price": 2500000,
-      "screenSize": 6.56,
-      "batteryCapacity": 4315,
-      "brand": "Vivo",
-      "storage": 256,
-      "ram": 8,
-      "cameraMpx": 48,
-      "cpu": "Qualcomm Snapdragon 765G",
       "chargingPortType": "USB-C",
       "fingerprint": true,
       "os": "Android"
@@ -918,20 +862,6 @@ export const phones: arrayPhones = {
       "os": "OxygenOS"
     },
     {
-      "name": "OnePlus 9",
-      "price": 3500000,
-      "screenSize": 6.55,
-      "batteryCapacity": 4500,
-      "brand": "OnePlus",
-      "storage": 256,
-      "ram": 12,
-      "cameraMpx": 48,
-      "cpu": "Qualcomm Snapdragon 888",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "OxygenOS"
-    },
-    {
       "name": "OnePlus 8T",
       "price": 2800000,
       "screenSize": 6.55,
@@ -969,20 +899,6 @@ export const phones: arrayPhones = {
       "ram": 12,
       "cameraMpx": 48,
       "cpu": "Qualcomm Snapdragon 765G",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "OxygenOS"
-    },
-    {
-      "name": "OnePlus 8",
-      "price": 2500000,
-      "screenSize": 6.55,
-      "batteryCapacity": 4300,
-      "brand": "OnePlus",
-      "storage": 256,
-      "ram": 12,
-      "cameraMpx": 48,
-      "cpu": "Qualcomm Snapdragon 865",
       "chargingPortType": "USB-C",
       "fingerprint": true,
       "os": "OxygenOS"
@@ -1096,20 +1012,6 @@ export const phones: arrayPhones = {
       "brand": "Honor",
       "storage": 256,
       "ram": 8,
-      "cameraMpx": 48,
-      "cpu": "HiSilicon Kirin 980",
-      "chargingPortType": "USB-C",
-      "fingerprint": true,
-      "os": "Magic UI 2.1"
-    },
-    {
-      "name": "Honor 20",
-      "price": 1200000,
-      "screenSize": 6.26,
-      "batteryCapacity": 3750,
-      "brand": "Honor",
-      "storage": 128,
-      "ram": 6,
       "cameraMpx": 48,
       "cpu": "HiSilicon Kirin 980",
       "chargingPortType": "USB-C",
