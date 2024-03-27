@@ -12,7 +12,12 @@ export default {
         cosmicLatte: '#FFF5E9',
       },
       animation: {
-        'fadeIn': 'fadeIn 0.5s ease-in-out forwards'
+        'fadeIn': 'fadeIn 0.5s ease-in-out forwards',
+        'scaleOp': 'scaleOp 0.3s ease-in-out forwards'
+      },
+      boxShadow: {
+        'around': '0px 0px 10px rgba(0, 0, 0, 0.3);',
+        'orange': '0px 0px 30px rgba(255, 143, 0, 0.7)'
       }
     },
     boxShadow: {

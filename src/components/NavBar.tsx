@@ -47,14 +47,14 @@ export function NavBar({ setModalSearch, modalSearch }: Props) {
         </div>
 
         <div className="flex lg:h-full items-center gap-5 lg:pr-10 max-lg:justify-center max-lg:mb-5">
-          <button className={`${modalSearch ? 'bg-darkOrange' : ''} p-2 rounded-full transition-all duration-300`}
+          <button className={`${modalSearch ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}
           onClick={() => { setModalSearch(!modalSearch); setShowBar(false); }}>
             <Search size={22} strokeWidth={2.4} />
           </button>
 
-          <button className="p-2 rounded-full">
+          <a href="/shoppingCart" className={` ${window.location.pathname.includes('shoppingCart') ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}>
             <ShoppingCart size={22} strokeWidth={2.4} />
-          </button>
+          </a>
 
           <button className="p-2 rounded-full">
             <User size={22} strokeWidth={2.4} />
