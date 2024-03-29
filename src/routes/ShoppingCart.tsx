@@ -17,16 +17,16 @@ export function ShoppingCart() {
   if (phones.length == 0) {
     return (
       <div className="animate-fadeIn w-full h-full flex justify-center items-center -mt-8">
-        <IconConfusedPhone className="scale-75"/>
-        <h1 className="text-center font-extrabold text-3xl -mt-3 -ml-6"> No hay telefonos <br/> agregados </h1>
+        <IconConfusedPhone className="scale-75 max-sm:scale-[60%] max-sm:-ml-20"/>
+        <h1 className="text-center font-extrabold max-sm:text-2xl text-3xl -mt-3 -ml-6 max-sm:-ml-10"> No hay telefonos <br/> agregados </h1>
       </div>
     )
   }
 
   return (
-    <section className="w-full min-h-full">
+    <section className="w-full min-h-full flex justify-center">
 
-      <div className="flex justify-center gap-20">
+      <div className="flex justify-center gap-10 lg:gap-20 flex-wrap">
         <section role="products">
           <h1 className="w-fit text-4xl font-semibold my-10 text-smokyBlack opacity-80"> Tus productos</h1>
 
@@ -36,7 +36,7 @@ export function ShoppingCart() {
           
         </section>
 
-        <section className="flex flex-col items-center" role="totalPrice">
+        <section className="flex flex-col items-center max-lg:mb-20" role="totalPrice">
           <TableTotalPrice/>
 
           <button className="hover:shadow-orange w-[290px] bg-darkOrange rounded-full py-[10px] mt-5 transition-all duration-300" role="pay">

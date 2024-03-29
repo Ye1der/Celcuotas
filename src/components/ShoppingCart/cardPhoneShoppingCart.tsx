@@ -8,14 +8,16 @@ export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
   const [check, setCheck] = useState(false)
   const {reloadStorage} = useCustomContext()
 
-  const [originPhone, setOriginPhone] = useState<Phone>(() => {
+  const getOriginPhone = () => {
     for (let element of allPhones) {
       if (element.name === phone.name) {
         return element
       }
     }
     return {} as Phone
-  })
+  }
+
+  const originPhone = getOriginPhone()
 
   const [contPhones, setContPhones] = useState(phone.price && originPhone.price ? phone.price / originPhone.price : 1)
 
@@ -48,6 +50,8 @@ export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
 
   function changePrice () {
     const result = localStorage.getItem('cartPhones')
+    console.log(originPhone);
+    
     if (!result) return 
 
     const cartPhones: Phone[] = JSON.parse(result)
@@ -56,7 +60,6 @@ export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
     if (thisPhone && thisPhone.price && originPhone.price){
       const indexThisPhone = cartPhones.indexOf(thisPhone)
       thisPhone.price = originPhone.price * contPhones
-      // var newCartPhones = cartPhones.filter(phoneObj => phoneObj.name !== phone.name)
       cartPhones[indexThisPhone] = thisPhone
       localStorage.setItem('cartPhones', JSON.stringify(cartPhones))
       reloadStorage()
@@ -66,10 +69,10 @@ export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
   useEffect(changePrice, [contPhones])
 
   return (
-    <div className="w-[600px] h-[180px] rounded-xl flex items-center px-5 relative mb-10">
+    <div className="max-sm:shadow-around max-sm:w-[350px] w-[600px] h-[180px] rounded-xl flex items-center px-5 relative mb-10">
       <img src={`/phones/${phone.name?.replace(/ /g, '-')}.webp`} alt="phone" className="h-[85%] my-auto select-none" />
-      <div className="h-[85%] ml-5 flex items-center relative">
-        <div className="absolute top-0">
+      <div className="h-[85%] ml-5 flex max-sm:flex-col max-sm:justify-center max-sm:mb-4 sm:items-center relative w-full">
+        <div className="sm:absolute sm:top-0">
           <h1 className="font-semibold text-xl"> {phone.name} </h1>
           <h2 className="font-semibold text-lg opacity-60"> {phone.brand} </h2>
         </div>
@@ -79,13 +82,13 @@ export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
         </div>
       </div>
 
-      <div className="flex items-center gap-5 absolute top-1/2 -translate-y-1/2 right-8">
+      <div className="flex items-center gap-5 absolute max-sm:bottom-2 max-sm:right-5 sm:top-1/2 sm:-translate-y-1/2 sm:right-8">
         <Minus onClick={() => {countPhones('subtraction')}} className="cursor-pointer hover:scale-110 transition-all duration-300 bg-darkOrange rounded-full p-[4px]" />
         <h1 className="text-lg font-semibold select-none"> {contPhones} </h1>
         <Plus onClick={() => {countPhones('adition')}} className="cursor-pointer hover:scale-110 transition-all duration-300 bg-darkOrange rounded-full p-[4px]" />
       </div>
 
-      <button onClick={deletePhone} className={`${check ? 'bg-red-500 text-white' : ''} group flex gap-2 py-1 px-3 rounded-full font-semibold absolute right-3 top-3 hover:bg-red-500 hover:text-white cursor-pointer transition-all duration-300`}>
+      <button onClick={deletePhone} className={`${check ? 'bg-red-500 text-white' : ''} group flex gap-2 py-1 px-3 rounded-full font-semibold absolute right-3 top-3 max-sm:right-0 max-sm:top-2 hover:bg-red-500 hover:text-white cursor-pointer transition-all duration-300`}>
         {!check ?
           <Trash2 className="animate-scaleOp" size={22} strokeWidth={2.5}/>
           :

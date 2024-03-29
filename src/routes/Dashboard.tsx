@@ -2,8 +2,10 @@ import { Slider } from "../components/Slider";
 import { Marcas } from "../components/dashboard/Marcas";
 import { Cards } from "../components/dashboard/Cards";
 import { BenefitBar } from "../components/dashboard/BenefitBar";
+import { useNavigate } from "react-router-dom";
 
 export function Dashboard() {
+  const navigate = useNavigate()
 
   return (
     <>
@@ -18,7 +20,7 @@ export function Dashboard() {
             ¡Encuentra el tuyo!
           </h1>
 
-          <button className={`font-semibold text-xl bg-darkOrange text-white py-2 px-5 rounded-xl mt-7 ml-2 hover:scale-110 transition-all duration-300`}>
+          <button onClick={() => {navigate('/store')}} className={`font-semibold text-xl bg-darkOrange text-white py-2 px-5 rounded-xl mt-7 ml-2 hover:scale-110 transition-all duration-300`}>
             Ver catalogo
           </button>
         </div>
