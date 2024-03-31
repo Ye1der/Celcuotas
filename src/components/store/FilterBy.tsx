@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FilterAccordion } from "./FilterAccordion";
 import { useCustomContext } from "../../context/Context";
 import { Phone } from "../../types";
+import { useParams } from "react-router-dom";
 
 interface Props {
   closeModal: () => void
@@ -11,6 +12,7 @@ interface Props {
 export function FilterBy({ closeModal }: Props) {
 
   const {filterStore, setFilterStore} = useCustomContext() // el filtro que se aplica
+  const {brand} = useParams()
   const [accordion, setAccordion] = useState('') // indica que parte debe de expandirse
   const [filterObject, setFilterObject] = useState(filterStore) // para ir construyendo el filtro antes de filtrar
   
@@ -22,6 +24,7 @@ export function FilterBy({ closeModal }: Props) {
     ram: 'Ram'
   }
   
+  // se usa para tener los titulos por defecto y usarlos cuando no hay ningun filtro
   let defaultTitles: defaultTitlesFilter = {
     brand: 'Marca', 
     storage: 'Almacenamiento', 
@@ -30,8 +33,11 @@ export function FilterBy({ closeModal }: Props) {
     ram: 'Ram'
   }
 
-  const [titles, setTitles] = useState(defaultTitles) // lo titulos de las opciones cambian dependiendo de la aopcion elegida
+  // si ya hay un filtro de marca pone ese nombre en lugar de poner el default
+  const [titles, setTitles] = useState(brand ? {...defaultTitles, brand: brand} : defaultTitles) // lo titulos de las opciones cambian dependiendo de la aopcion elegida
 
+  // El acordeon se activa cuando el useState accordion tiene el mimo nombre de la opcion
+  // entonces aqui lo que hacemos es que le quitamos el acordeon a todas las opciones cunado el modal se activa y desactiva
   useEffect(() => {
     setAccordion('')
   }, [closeModal])
@@ -41,7 +47,7 @@ export function FilterBy({ closeModal }: Props) {
     closeModal()
   }
 
-  function clearFilter () {
+  function clearFilter () { // Limpia el objeto que usamos para filtrar los celulares
     let objectClean: Phone = {
       batteryCapacity: null,
       brand: null,

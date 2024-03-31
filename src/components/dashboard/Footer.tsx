@@ -29,10 +29,10 @@ export function Footer() {
         <div>
           <h1 className="text-xl mb-2"> Soporte de pago </h1>
           <div className="flex flex-wrap items-center gap-10 scale-90">
-            <img src="/visa.png" alt="" className="w-[80px] h-[24px]" />
-            <img src="/mercadoPago.png" alt="" className="w-[104px] h-[42px]" />
-            <img src="/mastercard.png" alt="" />
-            <img src="/paypal.png" alt="" />
+            <img src="/visa.webp" alt="" className="w-[80px] h-[24px]" />
+            <img src="/mercadoPago.webp" alt="" className="w-[104px] h-[42px]" />
+            <img src="/mastercard.webp" alt="" />
+            <img src="/paypal.webp" alt="" />
           </div>
         </div>
 

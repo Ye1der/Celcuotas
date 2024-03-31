@@ -20,7 +20,7 @@ export function Dashboard() {
             ¡Encuentra el tuyo!
           </h1>
 
-          <button onClick={() => {navigate('/store')}} className={`font-semibold text-xl bg-darkOrange text-white py-2 px-5 rounded-xl mt-7 ml-2 hover:scale-110 transition-all duration-300`}>
+          <button onClick={() => {navigate('/store', {unstable_viewTransition: true})}} className={`font-semibold text-xl bg-darkOrange text-white py-2 px-5 rounded-xl mt-7 ml-2 hover:scale-110 transition-all duration-300`}>
             Ver catalogo
           </button>
         </div>

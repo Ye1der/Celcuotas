@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react"
 import { User } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useCustomContext } from "../context/Context"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
   modalSearch: boolean
@@ -11,7 +12,8 @@ interface Props {
 
 export function NavBar({ setModalSearch, modalSearch }: Props) {
 
-  const {showBar, setShowBar} = useCustomContext()
+  const { showBar, setShowBar } = useCustomContext()
+  const navigate = useNavigate()
   const buttonStyles = "px-4 py-1 rounded-xl transition-all duration-300 hover:bg-darkOrange hover:text-cosmicLatte"
 
   const [zIndex, setZIndex] = useState('')
@@ -21,6 +23,10 @@ export function NavBar({ setModalSearch, modalSearch }: Props) {
     else setTimeout(() => { setZIndex('') }, 300)
   }, [modalSearch])
 
+  function redirect(route: string) {
+    navigate(route, { unstable_viewTransition: true })
+  }
+
   return (
     <>
       <button onClick={() => { setShowBar(!showBar) }} className="lg:hidden absolute right-5 top-5 hover:text-darkOrange transition-all duration-300 z-40">
@@ -29,32 +35,32 @@ export function NavBar({ setModalSearch, modalSearch }: Props) {
 
       <section className={`${zIndex} bg-cosmicLatte h-[70px] lg:w-full flex lg:justify-between absolute top-0 transition-all duration-300 ${showBar ? 'max-lg:left-0' : 'max-lg:-left-full'} max-lg:flex-col max-lg:items-center max-lg:h-svh max-lg:w-fit max-lg:z-40 max-lg:py-10 max-lg:justify-between`}>
         <div className="flex lg:h-full items-center gap-8 font-semibold text-lg max-lg:flex-col">
-          <a href="/">
+          <button onClick={() => { redirect("/") }}>
             <img src="/logo.svg" alt="Logo" className="w-36 mr-10 ml-10 max-lg:mb-10" />
-          </a>
+          </button>
 
-          <a href="/store" className={`${buttonStyles} ${window.location.pathname.includes('store') ? 'bg-darkOrange text-white' : ''}`}>
+          <button onClick={() => { redirect("/store") }} className={`${buttonStyles} ${window.location.pathname.includes('store') ? 'bg-darkOrange text-white' : ''}`}>
             Tienda
-          </a>
+          </button>
 
-          <a href="" className={`${buttonStyles}`}>
+          <button onClick={() => { redirect("") }} className={`${buttonStyles}`}>
             Nuestra marca
-          </a>
+          </button>
 
-          <a href="" className={`${buttonStyles}`}>
+          <button onClick={() => { redirect("") }} className={`${buttonStyles}`}>
             Servicios
-          </a>
+          </button>
         </div>
 
         <div className="flex lg:h-full items-center gap-5 lg:pr-10 max-lg:justify-center max-lg:mb-5">
           <button className={`${modalSearch ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}
-          onClick={() => { setModalSearch(!modalSearch); setShowBar(false); }}>
+            onClick={() => { setModalSearch(!modalSearch); setShowBar(false); }}>
             <Search size={22} strokeWidth={2.4} />
           </button>
 
-          <a href="/shoppingCart" className={` ${window.location.pathname.includes('shoppingCart') ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}>
+          <button onClick={() => { redirect("/shoppingCart") }} className={` ${window.location.pathname.includes('shoppingCart') ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}>
             <ShoppingCart size={22} strokeWidth={2.4} />
-          </a>
+          </button>
 
           <button className="p-2 rounded-full">
             <User size={22} strokeWidth={2.4} />

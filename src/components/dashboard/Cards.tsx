@@ -8,7 +8,7 @@ export function Cards() {
             <p className="text-black text-lg"> Lleva tu celular a un precio <br /> ¡Increible! </p>
           </div>
 
-          <img src="phonesCard1.png" alt="imagen" className="max-w-[45%] max-h-[100%]" />
+          <img src="phonesCard1.webp" alt="imagen" className="max-w-[45%] max-h-[100%]" />
         </div>
 
         <div className="w-full h-[46%] bg-[#EE6618] bg-opacity-40 rounded-xl pl-8 flex items-center justify-between cursor-pointer hover:scale-105 transition-all duration-300">
@@ -17,7 +17,7 @@ export function Cards() {
             <p className="text-black text-lg"> Mira los smartphones <br /> Mas vendidos </p>
           </div>
 
-          <img src="phonesCard2.png" alt="imagen" className="max-w-[45%] max-h-[100%]" />
+          <img src="phonesCard2.webp" alt="imagen" className="max-w-[45%] max-h-[100%]" />
         </div>
 
       </div>
@@ -28,7 +28,7 @@ export function Cards() {
           <p className="text-black text-xl lg:ml-8 max-lg:w-[190px] text-wrap max-w-full"> Descubre los nuevos lanzamientos </p>
         </div>
 
-        <img src="phonesCard3.png" alt="imagen" className="max-w-[30%] lg:max-w-[50%] max-h-[100%] absolute max-sm:bottom-1/2 max-sm:translate-y-1/2 sm:bottom-0 max-lg:right-7 lg:left-1/2 lg:-translate-x-1/2" />
+        <img src="phonesCard3.webp" alt="imagen" className="max-w-[30%] lg:max-w-[50%] max-h-[100%] absolute max-sm:bottom-1/2 max-sm:translate-y-1/2 sm:bottom-0 max-lg:right-7 lg:left-1/2 lg:-translate-x-1/2" />
       </div>
     </section >
   )

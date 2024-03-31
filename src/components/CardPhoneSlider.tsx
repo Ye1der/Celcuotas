@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useCustomContext } from "../context/Context"
 
 interface Props {
@@ -40,8 +41,14 @@ export function CardPhoneSlider({ name, index, arrayLength }: Props) {
 
   const url = `/phones/${name?.replace(/ /g, "-")}.webp`
 
+  const navigate = useNavigate()
+
+  function redirect() {
+    navigate(`/phone/${name?.replace(/ /g, '-')}`, { unstable_viewTransition: true })
+  }
+
   return (
-    <div className={`${classCard} ${classCard !== "cardHideRight" && classCard !== "cardHideLeft" ? "card" : ""} flex flex-col items-center bg-gray-200 p-3 rounded-2xl w-fit absolute transition-all duration-300`}
+    <div onClick={redirect} className={`${classCard} ${classCard !== "cardHideRight" && classCard !== "cardHideLeft" ? "card" : ""} flex flex-col items-center bg-gray-200 p-3 rounded-2xl w-fit cursor-pointer hover:bg-gray-300 absolute transition-all duration-300`}
       style={{ zIndex: zIndex }}>
       <img src={url} alt="phone" className="min-w-[150px] max-w-[150px] min-h-[200px] max-h-[200px] z-[10]" />
       <h1 className="text-center font-semibold mt-3 text-lg"> {name?.slice(0, 16)} </h1>
