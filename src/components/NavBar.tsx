@@ -25,6 +25,7 @@ export function NavBar({ setModalSearch, modalSearch }: Props) {
 
   function redirect(route: string) {
     navigate(route, { unstable_viewTransition: true })
+    setTimeout(() => { setShowBar(false) }, 300)
   }
 
   return (
