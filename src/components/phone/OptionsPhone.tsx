@@ -4,19 +4,19 @@ import { type Phone } from "../../types"
 
 export function OptionsPhone({ phone }: { phone: Phone }) {
   const [colorOption, setColorOption] = useState(1)
-  const [check, setCheck] = useState(false)
+  // const [check, setCheck] = useState(false)
   const [storageOption, setStorageOption] = useState(false)
 
   return (
     <section className="max-sm:scale-75 max-sm:-my-10 h-[480px] w-[450px] bg-black bg-opacity-[5%] rounded-2xl p-8 relative">
-      <button className={`${check ? 'bg-darkOrange text-white' : ''} group flex gap-2 py-1 px-3 rounded-full font-semibold absolute right-3 top-3 max-sm:right-0 max-sm:top-2 hover:bg-darkOrange hover:text-white cursor-pointer transition-all duration-300`}>
+      {/* <button className={`${check ? 'bg-darkOrange text-white' : ''} group flex gap-2 py-1 px-3 rounded-full font-semibold absolute right-3 top-3 max-sm:right-0 max-sm:top-2 hover:bg-darkOrange hover:text-white cursor-pointer transition-all duration-300`}>
         {!check ?
           <ShoppingCartIcon className="animate-scaleOp" size={22} strokeWidth={2.5} />
           :
           <Check className="animate-scaleOp" />
         }
         <span className={`${check ? 'w-[150px] scale-x-100 opacity-100' : ''} text-white opacity-0 text-nowrap w-0 scale-x-0 group-hover:opacity-100 group-hover:w-[150px] group-hover:scale-x-100 transition-all duration-300 select-none`}> Agregar al carrito </span>
-      </button>
+      </button> */}
 
       <h2 className="text-lg font-semibold text-opacity-70 text-black"> {phone?.brand} </h2>
       <h1 className="text-2xl font-semibold"> {phone?.name} </h1>
@@ -71,8 +71,8 @@ export function OptionsPhone({ phone }: { phone: Phone }) {
       </div>
 
       <div className="w-full flex justify-center">
-        <button className="hover:shadow-orange px-4 py-1 bg-darkOrange rounded-full text-lg text-white font-semibold absolute bottom-7 transition-shadow duration-300">
-          Comprar Ahora
+        <button className="hover:shadow-orange flex items-center gap-2 px-4 py-1 bg-darkOrange rounded-full text-lg text-white font-semibold absolute bottom-7 transition-shadow duration-300">
+          Agregar al carrito <ShoppingCartIcon size={20} />
         </button>
       </div>
     </section>
