@@ -1,11 +1,31 @@
 import { useState } from "react"
 import { Check, ShoppingCartIcon } from "lucide-react"
 import { type Phone } from "../../types"
+import { useCustomContext } from "../../context/Context"
 
 export function OptionsPhone({ phone }: { phone: Phone }) {
   const [colorOption, setColorOption] = useState(1)
-  // const [check, setCheck] = useState(false)
+  const [check, setCheck] = useState(false)
   const [storageOption, setStorageOption] = useState(false)
+  const { reloadStorage } = useCustomContext()
+
+  function addShoppingCart() {
+    const data = localStorage.getItem('cartPhones')
+
+    if (data) {
+      const cartPhones: Phone[] = JSON.parse(data)
+      const thisPhoneExist = cartPhones.some((obj) => obj.name === phone.name)
+      if (!thisPhoneExist) cartPhones.push(phone)
+      localStorage.setItem('cartPhones', JSON.stringify(cartPhones))
+
+    } else {
+      localStorage.setItem('cartPhones', JSON.stringify([phone]))
+    }
+
+    setCheck(true)
+    setTimeout(() => { setCheck(false) }, 1000)
+    reloadStorage()
+  }
 
   return (
     <section className="max-sm:scale-75 max-sm:-my-10 h-[480px] w-[450px] bg-black bg-opacity-[5%] rounded-2xl p-8 relative">
@@ -71,8 +91,14 @@ export function OptionsPhone({ phone }: { phone: Phone }) {
       </div>
 
       <div className="w-full flex justify-center">
-        <button className="hover:shadow-orange flex items-center gap-2 px-4 py-1 bg-darkOrange rounded-full text-lg text-white font-semibold absolute bottom-7 transition-shadow duration-300">
-          Agregar al carrito <ShoppingCartIcon size={20} />
+        <button onClick={addShoppingCart} className="hover:shadow-orange flex items-center gap-2 px-4 py-1 bg-darkOrange rounded-full text-lg text-white font-semibold absolute bottom-7 transition-shadow duration-300">
+          Agregar al carrito
+
+          {!check ?
+            <ShoppingCartIcon size={20} className="animate-scaleOp" />
+            :
+            <Check size={20} className="animate-scaleOp" />
+          }
         </button>
       </div>
     </section>

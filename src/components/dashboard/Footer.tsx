@@ -43,9 +43,9 @@ export function Footer() {
           <h1 className="text-white font-semibold text-opacity-90"> Diseñado y desarrollado por </h1>
           <MoveRight className="text-white text-opacity-90 mt-[1px] max-sm:hidden" />
           <div className="flex items-center gap-3">
-            <h1 className="text-white font-semibold text-opacity-90"> Kate_12 </h1>
+            <a href="https://github.com/Ye1der" className="text-white font-semibold text-opacity-90 border-b-2 border-transparent hover:border-opacity-80 hover:border-white"> Kate_12 </a>
             <Slash size={15} strokeWidth={2.4} className="text-white text-opacity-90 -rotate-[30deg] h-fit w-fit mx-0 p-0" />
-            <h1 className="text-white font-semibold text-opacity-90"> Ye1der </h1>
+            <a href="https://github.com/Ye1der" className="text-white font-semibold text-opacity-90 border-b-2 border-transparent hover:border-opacity-80 hover:border-white"> Ye1der </a>
           </div>
         </div>
       </section>

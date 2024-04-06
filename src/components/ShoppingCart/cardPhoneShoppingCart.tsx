@@ -3,6 +3,7 @@ import { Phone } from "../../types";
 import { useEffect, useState } from "react";
 import { useCustomContext } from "../../context/Context";
 import { allPhones } from "../../data/phones";
+import { useRedirect } from "../customHooks/useRedirect";
 
 export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
   const [check, setCheck] = useState(false)
@@ -67,10 +68,11 @@ export function CardPhoneShoppingCart ({phone}: {phone: Phone}) {
   }
 
   useEffect(changePrice, [contPhones])
+  const redirect = useRedirect()
 
   return (
     <div className="max-sm:shadow-around max-sm:w-[350px] w-[600px] h-[180px] rounded-xl flex items-center px-5 relative mb-10">
-      <img src={`/phones/${phone.name?.replace(/ /g, '-')}.webp`} alt="phone" className="h-[85%] my-auto select-none" />
+      <img onClick={() => {redirect(phone.name!)}} src={`/phones/${phone.name?.replace(/ /g, '-')}.webp`} alt="phone" className="h-[85%] my-auto select-none cursor-pointer" />
       <div className="h-[85%] ml-5 flex max-sm:flex-col max-sm:justify-center max-sm:mb-4 sm:items-center relative w-full">
         <div className="sm:absolute sm:top-0">
           <h1 className="font-semibold text-xl"> {phone.name} </h1>

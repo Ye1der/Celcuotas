@@ -14,8 +14,6 @@ export function CardPhoneStore({ phone }: Props) {
   const navigate = useNavigate()
 
   function addShoppingCart() {
-    console.log("paso");
-
     const data = localStorage.getItem('cartPhones')
 
     if (data) {

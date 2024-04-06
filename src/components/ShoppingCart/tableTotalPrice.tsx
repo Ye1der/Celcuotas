@@ -2,22 +2,22 @@ import { useEffect, useState } from "react"
 import { Phone } from "../../types"
 import { useCustomContext } from "../../context/Context"
 
-export function TableTotalPrice () {
+export function TableTotalPrice() {
 
   const [priceSend] = useState(Math.round(Math.random() * 10000))
   const [subTotalPrice, setSubToltalPrice] = useState(0)
-  const {listenStorage} = useCustomContext()
+  const { listenStorage } = useCustomContext()
 
   useEffect(() => {
     console.log("paso");
-    
+
     const result = localStorage.getItem('cartPhones')
     if (!result) return
 
     var fullPrice = 0
     const cartPhones: Phone[] = JSON.parse(result)
 
-    for (let phone of cartPhones ) {
+    for (let phone of cartPhones) {
       fullPrice += phone.price ?? 0
     }
 
@@ -25,7 +25,7 @@ export function TableTotalPrice () {
   }, [listenStorage])
 
   return (
-    <div className="w-[350px] shadow-around bg-[#FAFAFA] p-6 rounded-xl lg:mt-[119px] text-xl select-none">
+    <div className="w-[350px] bg-black bg-opacity-[5%] p-6 rounded-xl lg:mt-[119px] text-xl select-none">
       <span className="flex flex-wrap justify-between w-full mb-1" role="subtotalPrice">
         <h1 className="font-bold"> Subtotal </h1>
         <h1 className="font-semibold opacity-70"> $ {subTotalPrice.toLocaleString('col')} COP </h1>

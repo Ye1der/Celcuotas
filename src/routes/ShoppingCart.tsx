@@ -3,11 +3,13 @@ import { CardPhoneShoppingCart } from "../components/ShoppingCart/cardPhoneShopp
 import { TableTotalPrice } from "../components/ShoppingCart/tableTotalPrice";
 import { IconConfusedPhone } from "../components/IconConfusedPhone";
 import { useCustomContext } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 
 export function ShoppingCart() {
 
   const [phones, setPhones] = useState([])
   const {listenStorage} = useCustomContext()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const cartPhones = localStorage.getItem('cartPhones')
@@ -39,7 +41,7 @@ export function ShoppingCart() {
         <section className="flex flex-col items-center max-lg:mb-20" role="totalPrice">
           <TableTotalPrice/>
 
-          <button className="hover:shadow-orange w-[290px] bg-darkOrange rounded-full py-[10px] mt-5 transition-all duration-300" role="pay">
+          <button onClick={() => {navigate('/pay', {unstable_viewTransition: true})}}  className="hover:shadow-orange w-[290px] bg-darkOrange rounded-full py-[10px] mt-5 transition-all duration-300" role="pay">
             <h1 className="text-xl font-bold text-white select-none"> Ir a comprar </h1>
           </button>
         </section>

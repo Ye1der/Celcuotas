@@ -8,6 +8,7 @@ import { Dashboard } from './routes/Dashboard.tsx'
 import { Store } from './routes/Store.tsx'
 import { ShoppingCart } from './routes/ShoppingCart.tsx'
 import Phone from './routes/Phone.tsx'
+import { Pay } from './routes/Pay.tsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/phone/:namePhone',
         element: <Phone />
+      },
+      {
+        path: '/pay',
+        element: <Pay />
       }
     ]
   }
