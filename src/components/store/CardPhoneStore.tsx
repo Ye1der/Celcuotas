@@ -1,6 +1,6 @@
 import { Check, Plus } from "lucide-react";
 import { Phone } from "../../types";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useCustomContext } from "../../context/Context";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,8 @@ export function CardPhoneStore({ phone }: Props) {
   const { reloadStorage } = useCustomContext()
   const navigate = useNavigate()
 
-  function addShoppingCart() {
+  function addShoppingCart(event: React.MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation()
     const data = localStorage.getItem('cartPhones')
 
     if (data) {

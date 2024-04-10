@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export function ShoppingCart() {
 
   const [phones, setPhones] = useState([])
-  const {listenStorage} = useCustomContext()
+  const { listenStorage } = useCustomContext()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -19,8 +19,8 @@ export function ShoppingCart() {
   if (phones.length == 0) {
     return (
       <div className="animate-fadeIn w-full h-full flex justify-center items-center -mt-8">
-        <IconConfusedPhone className="scale-75 max-sm:scale-[60%] max-sm:-ml-20"/>
-        <h1 className="text-center font-extrabold max-sm:text-2xl text-3xl -mt-3 -ml-6 max-sm:-ml-10"> No hay telefonos <br/> agregados </h1>
+        <IconConfusedPhone className="scale-75 max-sm:scale-[60%] max-sm:-ml-20" />
+        <h1 className="text-center font-extrabold max-sm:text-2xl text-3xl -mt-3 -ml-6 max-sm:-ml-10"> No hay telefonos <br /> agregados </h1>
       </div>
     )
   }
@@ -33,15 +33,15 @@ export function ShoppingCart() {
           <h1 className="w-fit text-4xl font-semibold my-10 text-smokyBlack opacity-80"> Tus productos</h1>
 
           {phones.map((phone, index) => {
-            return <CardPhoneShoppingCart key={index} phone={phone}/>
+            return <CardPhoneShoppingCart key={index} phone={phone} />
           })}
-          
+
         </section>
 
-        <section className="flex flex-col items-center max-lg:mb-20" role="totalPrice">
-          <TableTotalPrice/>
+        <section className="flex flex-col items-center max-lg:mb-20 lg:mt-[119px]" role="totalPrice">
+          <TableTotalPrice />
 
-          <button onClick={() => {navigate('/pay', {unstable_viewTransition: true})}}  className="hover:shadow-orange w-[290px] bg-darkOrange rounded-full py-[10px] mt-5 transition-all duration-300" role="pay">
+          <button onClick={() => { navigate('/pay', { unstable_viewTransition: true }) }} className="hover:shadow-orange w-[290px] bg-darkOrange rounded-full py-[8px] mt-5 transition-all duration-300" role="pay">
             <h1 className="text-xl font-bold text-white select-none"> Ir a comprar </h1>
           </button>
         </section>

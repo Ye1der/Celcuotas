@@ -14,7 +14,8 @@ export default {
       animation: {
         'fadeIn': 'fadeIn 0.3s ease-in-out forwards',
         'fadeOut': 'fadeOut 0.3s ease-in-out forwards',
-        'scaleOp': 'scaleOp 0.3s ease-in-out forwards'
+        'scaleOp': 'scaleOp 0.3s ease-in-out forwards',
+        'fastSpin': 'fastSpin 0.5s linear infinite'
       },
       boxShadow: {
         'around': '0px 0px 10px rgba(0, 0, 0, 0.3);',

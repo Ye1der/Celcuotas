@@ -9,8 +9,6 @@ export function TableTotalPrice() {
   const { listenStorage } = useCustomContext()
 
   useEffect(() => {
-    console.log("paso");
-
     const result = localStorage.getItem('cartPhones')
     if (!result) return
 
@@ -25,22 +23,22 @@ export function TableTotalPrice() {
   }, [listenStorage])
 
   return (
-    <div className="w-[350px] bg-black bg-opacity-[5%] p-6 rounded-xl lg:mt-[119px] text-xl select-none">
+    <div className="w-[350px] border-2 border-black border-opacity-40 p-6 rounded-xl text-xl select-none">
       <span className="flex flex-wrap justify-between w-full mb-1" role="subtotalPrice">
         <h1 className="font-bold"> Subtotal </h1>
-        <h1 className="font-semibold opacity-70"> $ {subTotalPrice.toLocaleString('col')} COP </h1>
+        <h1 className="font-semibold opacity-70 text-[18px]"> $ {subTotalPrice.toLocaleString('col')} COP </h1>
       </span>
 
       <span className="flex flex-wrap justify-between w-full mb-1 gap-10" role="sendPrice">
         <h1 className="font-bold"> Envio </h1>
-        <h1 className="font-semibold opacity-70"> $ {priceSend.toLocaleString('col')} COP </h1>
+        <h1 className="font-semibold opacity-70 text-[18px]"> $ {priceSend.toLocaleString('col')} COP </h1>
       </span>
 
       <hr className="mx-auto my-3 border border-black rounded-full border-opacity-70" />
 
       <span className="flex flex-wrap justify-between w-full mb-1 gap-10" role="total">
         <h1 className="font-bold"> Total </h1>
-        <h1 className="font-semibold opacity-70"> $ {(priceSend + subTotalPrice).toLocaleString('col')} COP</h1>
+        <h1 className="font-semibold opacity-70 text-[18px]"> $ {(priceSend + subTotalPrice).toLocaleString('col')} COP</h1>
       </span>
     </div>
   )
