@@ -2,24 +2,24 @@
 import { useState } from "react";
 import { UseControllerProps, useController } from "react-hook-form";
 
-interface Props extends UseControllerProps<FormValue>{
+interface Props extends UseControllerProps<any>{
   label: string
   width?: string
   options: string[]
 }
 
-type FormValue = {
-  typeDoc: string,
-  names: string
-  lastnames: string
-  email: string
-  doc: string
-  department: string
-  address: string
-  tower: string
-  city: string
-  neighbordhood: string
-}
+// type FormValue = {
+//   typeDoc: string,
+//   names: string
+//   lastnames: string
+//   email: string
+//   doc: string
+//   department: string
+//   address: string
+//   tower: string
+//   city: string
+//   neighbordhood: string
+// }
 
 export const CustomSelectInput = ({ label, width = '300px', options, name, control, rules, ...rest }: Props) => {
 
@@ -32,7 +32,7 @@ export const CustomSelectInput = ({ label, width = '300px', options, name, contr
       {/* le ponemos el field al input para que lo registre dentro del form */}
       <input {...rest} {...field} required readOnly type="text" value={field.value} onClick={() => { setShowOptions(!showOptions) }} className={`peer ${selectedOption !== '' && 'border-opacity-70'} ${showOptions ? 'rounded-t-2xl border-opacity-70' : 'rounded-2xl border-opacity-40'} z-40 cursor-pointer group text-start px-4 text-lg font-semibold outline-none bg-transparent border-2 border-black w-full h-12 transition-all duration-300 relative`} />
 
-      <div className={`${showOptions ? 'animate-fadeIn' : 'animate-fadeOut'} border-2 border-t-0 border-black border-opacity-70 rounded-b-2xl absolute bottom-0 translate-y-full w-[${width}] z-30 transition-all duration-300`}>
+      <div className={`${showOptions ? 'animate-fadeIn' : 'animate-fadeOut'} border-2 border-t-0 border-black border-opacity-70 rounded-b-2xl absolute bottom-0 translate-y-full w-[${width}] z-50 transition-all duration-300`}>
         {options.map((value, index) => {
 
           const border = options.length - 1 === index ? 'rounded-b-2xl' : 'border-b-2 border-black border-opacity-70'

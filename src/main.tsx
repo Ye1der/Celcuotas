@@ -9,6 +9,7 @@ import { Store } from './routes/Store.tsx'
 import { ShoppingCart } from './routes/ShoppingCart.tsx'
 import Phone from './routes/Phone.tsx'
 import { Pay } from './routes/Pay.tsx'
+import { Credit } from './routes/Credit.tsx'
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/pay',
         element: <Pay />
+      },
+      {
+        path: '/credit',
+        element: <Credit/>
       }
     ]
   }

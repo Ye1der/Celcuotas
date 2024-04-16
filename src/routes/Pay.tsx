@@ -6,7 +6,7 @@ import { TableTotalPrice } from "../components/ShoppingCart/tableTotalPrice";
 import { Phone } from "../types";
 import { CheckCircle2, ChevronLeft, Loader2Icon, PackageCheck, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { Modal } from "../components/Modal";
 
 type FormValues = {
@@ -27,6 +27,7 @@ export function Pay() {
   const [selected, setSelected] = useState('')
   const [check, setCheck] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [showWarningMessage, setShowWarningMessage] = useState(false)
   const navigate = useNavigate()
 
   const [phones] = useState(() => {
@@ -41,10 +42,16 @@ export function Pay() {
 
   function submit(data: FormValues) {
     setCheck(true)
+    setShowWarningMessage(false)
 
     setTimeout(() => {
+      if (selected !== '') {
+        if (selected === 'Solicitud de credito') navigate('/credit', {unstable_viewTransition: true})
+        else setShowModal(true)
+        setCheck(false)
+      } else setShowWarningMessage(true)
+
       setCheck(false)
-      setShowModal(true)
     }, 1500)
   }
 
@@ -77,7 +84,7 @@ export function Pay() {
               <CustomInput className="max-sm:w-[300px]" {...register('email', { required: true })} label="Correo electronico" width="100%" type="email" />
 
               <div className="flex gap-5 max-sm:flex-col max-sm:gap-3">
-                <CustomSelectInput control={control} name="typeDoc" rules={{required: true}} label="Tipo de documento" options={['cedula ciudadania', 'visa', 'cedula extranjeria']} />
+                <CustomSelectInput control={control} name="typeDoc" rules={{required: true}} label="Tipo de documento" options={['cedula ciudadania', 'cedula extranjeria', 'pasaporte']} />
                 <CustomInput {...register('doc', { required: true })} label="Numero de documento" type="number" min={0} />
               </div>
             </div>
@@ -104,12 +111,14 @@ export function Pay() {
           <div className=" p-5 rounded-xl w-full">
             <h1 className="text-2xl text-smokyBlack text-opacity-80 font-semibold mb-5"> Metodo de pago </h1>
             <div className="flex flex-col gap-3 w-full">
+              <SelectButton label="Solicitud de credito" selected={selected} setSelected={setSelected} />
               <SelectButton label="Targeta debito / credito" selected={selected} setSelected={setSelected} />
               <SelectButton label="PSE" selected={selected} setSelected={setSelected} />
               <SelectButton label="Mercado pago" selected={selected} setSelected={setSelected} />
               <SelectButton label="Nequi" selected={selected} setSelected={setSelected} />
               <SelectButton label="Paypal" selected={selected} setSelected={setSelected} />
             </div>
+            {showWarningMessage && <h1 className="text-red-500 font-semibold ml-5 mt-3"> Debe seleccionar un metodo de pago </h1>}
           </div>
 
           <div className="w-full flex justify-between items-center px-5 -mt-3">
