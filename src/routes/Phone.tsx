@@ -4,7 +4,7 @@ import { OptionsPhone } from "../components/phone/OptionsPhone"
 import { PhoneSpecifications } from "../components/phone/PhoneSpecifications"
 import { allPhones } from "../data/phones"
 import { useRedirect } from "../components/customHooks/useRedirect"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function Phone() {
   const { namePhone } = useParams()

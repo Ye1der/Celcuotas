@@ -6,7 +6,7 @@ import { TableTotalPrice } from "../components/ShoppingCart/tableTotalPrice";
 import { Phone } from "../types";
 import { CheckCircle2, ChevronLeft, Loader2Icon, PackageCheck, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Modal } from "../components/Modal";
 
 type FormValues = {
@@ -40,7 +40,7 @@ export function Pay() {
     return [] as Phone[]
   })
 
-  function submit(data: FormValues) {
+  function submit() {
     setCheck(true)
     setShowWarningMessage(false)
 
