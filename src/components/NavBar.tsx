@@ -1,6 +1,5 @@
 import { AlignLeft, Search, X } from "lucide-react"
 import { ShoppingCart } from "lucide-react"
-import { User } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useCustomContext } from "../context/Context"
 import { useNavigate } from "react-router-dom"
@@ -12,7 +11,7 @@ interface Props {
 
 export function NavBar({ setModalSearch, modalSearch }: Props) {
 
-  const { showBar, setShowBar } = useCustomContext()
+  const { showBar, setShowBar, setModalLogin } = useCustomContext()
   const navigate = useNavigate()
   const buttonStyles = "px-4 py-1 rounded-xl transition-all duration-300 hover:bg-darkOrange hover:text-cosmicLatte"
 
@@ -44,27 +43,30 @@ export function NavBar({ setModalSearch, modalSearch }: Props) {
             Tienda
           </button>
 
-          <button onClick={() => { redirect("") }} className={`${buttonStyles}`}>
+          <button onClick={() => { redirect("/aboutUs") }} className={`${buttonStyles} ${window.location.pathname.includes('aboutUs') ? 'bg-darkOrange text-white' : ''}`}>
             Nuestra marca
           </button>
 
-          <button onClick={() => { redirect("") }} className={`${buttonStyles}`}>
-            Servicios
+          <button onClick={() => { redirect("/simulateCredit") }} className={`${buttonStyles} ${window.location.pathname.includes('simulateCredit') ? 'bg-darkOrange text-white' : ''}`}>
+            Simular credito
           </button>
         </div>
 
-        <div className="flex lg:h-full items-center gap-5 lg:pr-10 max-lg:justify-center max-lg:mb-5">
-          <button className={`${modalSearch ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}
-            onClick={() => { setModalSearch(!modalSearch); setShowBar(false); }}>
-            <Search size={22} strokeWidth={2.4} />
-          </button>
+        <div className="flex max-lg:flex-col lg:h-full items-center gap-3 lg:pr-10 max-lg:justify-center max-lg:mb-5">
+          <div className="flex gap-3">
+            <button className={`${modalSearch ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}
+              onClick={() => { setModalSearch(!modalSearch); setShowBar(false); }}>
+              <Search size={22} strokeWidth={2.4} />
+            </button>
 
-          <button onClick={() => { redirect("/shoppingCart") }} className={` ${window.location.pathname.includes('shoppingCart') ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}>
-            <ShoppingCart size={22} strokeWidth={2.4} />
-          </button>
+            <button onClick={() => { redirect("/shoppingCart") }} className={` ${window.location.pathname.includes('shoppingCart') ? 'bg-darkOrange text-white' : ''} hover:bg-darkOrange hover:text-white p-2 rounded-full transition-colors duration-300`}>
+              <ShoppingCart size={22} strokeWidth={2.4} />
+            </button>
+          </div>
 
-          <button className="p-2 rounded-full">
-            <User size={22} strokeWidth={2.4} />
+          <button onClick={() => {setModalLogin(true); setShowBar(false)}} className="m-0 px-4 py-1 rounded-xl transition-all duration-300 bg-smokyBlack bg-opacity-80 text-white hover:bg-white hover:text-black font-semibold text-lg">
+            {/* <User size={22} strokeWidth={2.4} /> */}
+            <h1> Iniciar sesion </h1>
           </button>
         </div>
       </section>

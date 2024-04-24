@@ -8,6 +8,7 @@ import { useCustomContext } from "../context/Context";
 import { IconConfusedPhone } from "../components/IconConfusedPhone";
 import { Pagination } from "../components/Pagination";
 import { useParams } from "react-router-dom";
+import Spline from '@splinetool/react-spline';
 
 export function Store() {
 
@@ -100,7 +101,7 @@ export function Store() {
   return (
     <section className="w-full">
       <section className="w-full flex justify-center mt-16 items-center gap-20">
-        <img src="/mainStore.webp" alt="" className="w-0 max-lg:hidden lg:w-[450px] xl:w-[580px] rounded-xl" />
+        <Spline scene="https://prod.spline.design/jzOwPFiVMFRzUdQh/scene.splinecode" />
 
         <div>
           <h3 className="text-darkOrange text-2xl font-semibold text-center mb-3 animate-bounce"> ¡No esperes más! </h3>

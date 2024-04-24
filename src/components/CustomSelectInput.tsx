@@ -1,4 +1,5 @@
 // import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { UseControllerProps, useController } from "react-hook-form";
 
@@ -31,6 +32,8 @@ export const CustomSelectInput = ({ label, width = '300px', options, name, contr
     <div className={`relative flex items-center h-fit mt-5 w-[${width}]`}>
       {/* le ponemos el field al input para que lo registre dentro del form */}
       <input {...rest} {...field} required readOnly type="text" value={field.value} onClick={() => { setShowOptions(!showOptions) }} className={`peer ${selectedOption !== '' && 'border-opacity-70'} ${showOptions ? 'rounded-t-2xl border-opacity-70' : 'rounded-2xl border-opacity-40'} z-40 cursor-pointer group text-start px-4 text-lg font-semibold outline-none bg-transparent border-2 border-black w-full h-12 transition-all duration-300 relative`} />
+
+      <ChevronDown className={`absolute right-4 mt-1 ${showOptions ? 'opacity-100 rotate-180' : 'opacity-50 rotate-0'} transition-all duration-300`} strokeWidth={2.4}/>
 
       <div className={`${showOptions ? 'animate-fadeIn' : 'animate-fadeOut'} border-2 border-t-0 border-black border-opacity-70 rounded-b-2xl absolute bottom-0 translate-y-full w-[${width}] z-50 transition-all duration-300`}>
         {options.map((value, index) => {

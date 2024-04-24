@@ -17,6 +17,8 @@ interface MyContextType {
   setShowBar: Dispatch<SetStateAction<boolean>>
   listenStorage: boolean
   reloadStorage: () => void
+  modalLogin: boolean
+  setModalLogin: (newValue: boolean) => void
 }
 
 const context = createContext<MyContextType>({} as MyContextType)
@@ -27,6 +29,7 @@ export function ContextGlbal({ children }: { children: ReactNode }) {
   const [hideItem, setHideItem] = useState(true)
   const [orderBy, setOrderBy] = useState<'none' | 'heighestPrice' | 'lowestPrice'>('none')
   const [modalSearch, setModalSearch] = useState(false)
+  const [modalLogin, setModalLogin] = useState(false)
   const [showBar, setShowBar] = useState(false)
   const [listenStorage, setListenStorage] = useState(false)
 
@@ -57,7 +60,8 @@ export function ContextGlbal({ children }: { children: ReactNode }) {
       orderBy, setOrderBy, 
       modalSearch, setModalSearch, 
       showBar, setShowBar,
-      reloadStorage, listenStorage
+      reloadStorage, listenStorage,
+      modalLogin, setModalLogin
     }}>
       {children}
     </context.Provider>

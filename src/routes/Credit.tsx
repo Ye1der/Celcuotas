@@ -1,4 +1,4 @@
-import { CheckCircle2, CreditCard, Loader2Icon, MoveRight, X } from "lucide-react";
+import { CheckCircle2, CreditCard, Loader2Icon, MoveRight, Redo, X } from "lucide-react";
 import { CustomInput } from "../components/CustomInput";
 import { CustomSelectInput } from "../components/CustomSelectInput";
 import { useForm } from "react-hook-form";
@@ -43,15 +43,15 @@ export function Credit() {
 
 
   return (
-    <main className="w-full h-full flex justify-center items-center">
-      <section className="">
+    <main className="w-full min-h-svh flex flex-wrap justify-center items-center gap-10 pb-20">
+      <section className="max-[689px]:mt-10">
         <h2 className="text-2xl font-semibold ml-1"> Solicita tu credito </h2>
         <h1 className="text-4xl font-semibold text-darkOrange"> ¡Sin salir de casa! </h1>
 
-        <img src="/creditImage.png" alt="image" className="w-[350px] mb-2 mt-3" />
+        <img src="/creditImage.png" alt="image" className="w-[350px] mb-2 mt-3 " />
 
-        <p className="font-semibold w-[400px] ml-1 flex items-center">
-          Simplemente completa el formulario <MoveRight className="mt-1 ml-3" />
+        <p className="font-semibold ml-1 flex items-center">
+          Simplemente completa el formulario <MoveRight className="mt-1 ml-3 max-[689px]:hidden" /> <Redo className=" rotate-[50deg] ml-3  min-[689px]:hidden"/>
         </p>
       </section>
       <section>
@@ -75,8 +75,8 @@ export function Credit() {
           </button>
 
           <CheckCircle2 size={80}  className="text-darkOrange animate-bounce" />
-          <h1 className="text-darkOrange font-semibold"> ¡Felicidades! </h1>
-          <h1 className="text-2xl text-smokyBlack font-semibold text-opacity-90"> Tu credito fue aprovado </h1>
+          <h1 className="text-darkOrange font-semibold"> ¡Solicitud enviada con exito! </h1>
+          <h1 className="text-2xl text-smokyBlack font-semibold text-opacity-90"> Pronto te contactaremos </h1>
         </div>
       </Modal>
     </main>

@@ -1,0 +1,35 @@
+.mount {
+  animation: scaleHeight 0.3s linear forwards;
+}
+
+.unmount {
+  animation: scaleHeight2 0.3s linear forwards;
+}
+
+@keyframes scaleHeight {
+  from {
+    height: 0px;
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+    margin: 0;
+  }
+
+  to {
+    height: 48px;
+  }
+}
+
+@keyframes scaleHeight2 {
+  from {
+    height: 48px;
+  }
+
+  to {
+    height: 0px;
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+    margin: 0;
+  }
+}

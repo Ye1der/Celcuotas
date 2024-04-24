@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CardPhoneSlider } from "./CardPhoneSlider";
-import './slider.css'
+import './styles/slider.css'
 import { useCustomContext } from "../context/Context";
 import { allPhones } from "../data/phones";
 

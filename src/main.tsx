@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import './components/animations.css'
+import './components/styles/animations.css'
 import { ContextGlbal } from './context/Context.tsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Dashboard } from './routes/Dashboard.tsx'
@@ -10,6 +10,8 @@ import { ShoppingCart } from './routes/ShoppingCart.tsx'
 import Phone from './routes/Phone.tsx'
 import { Pay } from './routes/Pay.tsx'
 import { Credit } from './routes/Credit.tsx'
+import { AboutUs } from './routes/AboutUs.tsx'
+import { SimulateCredit } from './routes/SimulateCredit.tsx'
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: '/credit',
         element: <Credit/>
+      },
+      {
+        path: '/aboutUs',
+        element: <AboutUs/>
+      },
+      {
+        path: '/simulateCredit',
+        element: <SimulateCredit/>
       }
     ]
   }

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from "react"
-import './modal.css'
+import './styles/modal.css'
 
 interface Props {
   children: ReactNode

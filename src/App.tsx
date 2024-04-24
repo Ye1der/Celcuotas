@@ -1,18 +1,19 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useCustomContext } from './context/Context'
 import { NavBar } from './components/NavBar'
-import { Footer } from './components/dashboard/Footer'
+import { Footer } from './components/Footer'
 import { Modal } from './components/Modal'
 import { Search } from './components/Search'
-import './components/modal.css'
+import './components/styles/modal.css'
 import { useEffect, useRef, useState } from 'react'
+import { Login } from './components/Login'
 
 function App() {
-  const { setShowBar, modalSearch, setModalSearch } = useCustomContext()
+  const { setShowBar, modalSearch, setModalSearch, modalLogin, setModalLogin } = useCustomContext()
   const [modalAnimation, setModalAnimation] = useState<"scale" | "translate">(window.innerWidth >= 1024 ? 'translate' : 'scale')
 
   useEffect(() => { // escucha cuando el tamaño de la pantalla cambia y ejecuta la funcion selectAnimation
-    const selectAnimation = () => { // Dependiendo de que tamaño de pantalla halla pondra una u otra animcaion
+    const selectAnimation = () => { // Dependiendo de que tamaño de pantalla haya pondra una u otra animcaion
       if (window.innerWidth >= 1024) {
         setModalAnimation('translate')
       } else {
@@ -40,6 +41,7 @@ function App() {
 
       <section ref={main} onClick={() => { setShowBar(false) }} className='animate-fadeIn w-full h-full overflow-auto scrollbar-none'>
         <Modal active={modalSearch} setActive={setModalSearch} children={<Search />} animation={modalAnimation} />
+        <Modal active={modalLogin} setActive={setModalLogin} children={<Login/>}/>
           <Outlet />
         <Footer />
       </section>
