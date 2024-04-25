@@ -137,7 +137,7 @@ export function Store() {
               :
               <div className="animate-fadeIn w-full h-full flex flex-wrap justify-center items-center">
                 <IconConfusedPhone className="opacity-80 scale-90" />
-                <h1 className="text-3xl font-extrabold opacity-80 text-center mb-8 -ml-5 "> No se encontraron <br /> referencias </h1>
+                <h1 className="text-3xl font-extrabold opacity-80 text-center mb-8 md:-ml-5 "> No se encontraron <br /> referencias </h1>
               </div>
             }
           </div>
