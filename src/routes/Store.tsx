@@ -1,14 +1,14 @@
 import { CardPhoneStore } from "../components/store/CardPhoneStore";
 import { OrderBy } from "../components/store/OrderBy";
 import { FilterButton } from "../components/store/FilterButton";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { allPhones } from "../data/phones";
 import { Phone } from "../types";
 import { useCustomContext } from "../context/Context";
 import { IconConfusedPhone } from "../components/IconConfusedPhone";
 import { Pagination } from "../components/Pagination";
 import { useParams } from "react-router-dom";
-import Spline from '@splinetool/react-spline';
+import Spline from '@splinetool/react-spline'
 
 export function Store() {
 
@@ -98,10 +98,16 @@ export function Store() {
 
   useEffect(filter, [filterStore, orderBy])
 
+  // const Spline = React.lazy(() => import('@splinetool/react-spline'))
+
   return (
     <section className="w-full">
-      <section className="w-full flex justify-center mt-16 items-center gap-20">
-        <Spline scene="https://prod.spline.design/jzOwPFiVMFRzUdQh/scene.splinecode" />
+      <section className="w-full flex flex-wrap justify-center mt-16 items-center gap-10">
+        <Spline style={{margin: '0px', width: '400px', height: '400px'}}
+          onLoad={(spline) => {
+            spline.setZoom(0.7)
+          }} 
+          scene="https://prod.spline.design/zjckjnB2qj1dlTut/scene.splinecode"/>
 
         <div>
           <h3 className="text-darkOrange text-2xl font-semibold text-center mb-3 animate-bounce"> ¡No esperes más! </h3>

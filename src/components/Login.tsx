@@ -3,6 +3,13 @@ import { CustomInput } from "./CustomInput";
 import { useEffect, useState } from "react";
 import styles from '../components/styles/animationMountInput.module.css'
 import { useCustomContext } from "../context/Context";
+import { useForm } from "react-hook-form";
+
+type FormValues = {
+  name?: string
+  email: string
+  password: string
+}
 
 export function Login () {
 
@@ -23,15 +30,21 @@ export function Login () {
     setShowPassword(false)
   }, [modalLogin])
 
+  const {handleSubmit, register} = useForm<FormValues>()
+
+  function submit (data: FormValues) {
+    console.log(data);
+  }
+
   return (
     <section className="bg-cosmicLatte rounded-3xl p-7 max-sm:scale-90 flex flex-row-reverse items-center justify-center gap-20">
       <section>
-        <div className="bg-white rounded-2xl p-4 flex flex-col gap-2">
-          <CustomInput allClassName={`${firstAnimation ? isRegister ? styles.mount : styles.unmount : 'hidden'}`} label="Nombre" width="100%"/>
-          <CustomInput width="100%" type="email" label="Correo electronico"/>
+        <form onSubmit={handleSubmit(submit)} className="bg-white rounded-2xl p-4 flex flex-col gap-2">
+          <CustomInput {...register('name', {required: false})} allClassName={`${firstAnimation ? isRegister ? styles.mount : styles.unmount : 'hidden'}`} label="Nombre completo" width="100%"/>
+          <CustomInput {...register('email', {required: true})} width="100%" type="email" label="Correo electronico"/>
           <div className="relative flex gap-2 place-items-center w-full">
-            <CustomInput width="auto" label="Contraseña" type={showPassword ? 'text' : 'password'}/>
-            <button onClick={() => {setShowPassword(prev => !prev)}} className={`p-[10px] border-2 border-white ${showPassword ? 'border-opacity-100 bg-black' : 'border-opacity-40'} mt-5 rounded-2xl transition-colors duration-300`}>
+            <CustomInput {...register('password', {required: true})} width="auto" label="Contraseña" type={showPassword ? 'text' : 'password'}/>
+            <button type="button" onClick={() => {setShowPassword(prev => !prev)}} className={`p-[10px] border-2 border-white ${showPassword ? 'border-opacity-100 bg-black' : 'border-opacity-40'} mt-5 rounded-2xl transition-colors duration-300`}>
               {showPassword ? 
                 <EyeIcon className="text-white animate-scale"/>
                 :
@@ -41,19 +54,19 @@ export function Login () {
           </div>
 
           <button className="bg-darkOrange py-[9px] mt-4 text-lg font-semibold text-white rounded-2xl hover:shadow-orange transition-shadow duration-300">  
-          {!isRegister ? 'Inicia sesion' : 'Registrate'}
+            {!isRegister ? 'Inicia sesion' : 'Registrate'}
           </button>
 
           <hr className="w-[40%] mx-auto my-4 border-black border-opacity-70"/> 
 
-          <button className="bg-transparent border-2 border-blue-900 text-blue-900 py-[9px] text-lg mt-0 font-semibold rounded-2xl hover:bg-blue-900 hover:text-white transition-colors duration-300">  
+          <button type="button" className="bg-transparent border-2 border-blue-900 text-blue-900 py-[9px] text-lg mt-0 font-semibold rounded-2xl hover:bg-blue-900 hover:text-white transition-colors duration-300">  
               Iniciar sesion con facebook
           </button>
 
-          <button className="bg-transparent border-2 border-red-600 text-red-600 py-[9px] text-lg mt-1 font-semibold rounded-2xl hover:bg-red-600 hover:text-white transition-colors duration-300">  
+          <button type="button" className="bg-transparent border-2 border-red-600 text-red-600 py-[9px] text-lg mt-1 font-semibold rounded-2xl hover:bg-red-600 hover:text-white transition-colors duration-300">  
             Iniciar sesion con google
           </button>
-        </div>
+        </form>
 
         <div className="font-semibold w-full bg-white p-4 rounded-2xl text-center mt-3">
           <h1 className="flex items-center justify-center"> ¿{isRegister ? 'Ya' : 'No'} tienes una cuenta? <MoveRight className="mx-2" size={18}/>
@@ -68,9 +81,9 @@ export function Login () {
         <h1 className="text-[40px] font-semibold text-darkOrange -rotate-[9deg]"> ¡Hola! </h1>
 
         <p className="animate-fadeIn py-2 px-4 bg-[#FFC700] bg-opacity-10 rounded-xl font-semibold text-smokyBlack text-opacity-85 ml-12 rotate-[6deg]"> 
-          Bienvenido a bordo, <br />
-          estamos emocionados de <br />
-          tenerte como parte de <br />
+          Bienvenido a bordo <br />
+          estamos emocionados <br />
+          de que hagas parte de <br />
           nuestra comunidad.
         </p>
         
