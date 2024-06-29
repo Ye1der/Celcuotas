@@ -35,7 +35,3 @@ $ git switch -c nombre-de-la-rama
 ```
 - Luego de eso puedes hacer tus commits con los cambios que quieras hacer
 - Abrir una pull request para poder fucionar tus cambios con la rama principal
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
