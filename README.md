@@ -1,29 +1,40 @@
-# React + TypeScript + Vite
+# Celcuotas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduccion
+Celcuotas es un front que simula la venta del catalogo de celcuotas, <br/>
+se hizo como proyecto de semestre para la materia de diseño web avanzado, <br/>
+la idea era crear un front atractivo he intuitivo.
 
-Currently, two official plugins are available:
+## Tecnologías utilizadas
+- React
+- Tailwind
+- Typescript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instalación
+Para poner instalar y ejecutar el proyecto hay que seguir los siguientes pasos
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Clonar el repositorio
+```sh 
+$ git clone https://github.com/Ye1der/Routine-Editor.git
 ```
+- Ubicarse en la raíz del respositorio y ejecutar los siguientes comandos
+```sh 
+$ npm install
+```
+```sh 
+$ npm run dev
+```
+
+## Colaboracion
+Si quisieras colaborar en el proyecto lo puedes hacer de la siguiente forma
+
+- Haz un fork del repositorio
+- Crea una nueva rama con los cambios o arreglo que quieras realizar
+```sh
+$ git switch -c nombre-de-la-rama
+```
+- Luego de eso puedes hacer tus commits con los cambios que quieras hacer
+- Abrir una pull request para poder fucionar tus cambios con la rama principal
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
